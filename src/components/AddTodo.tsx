@@ -1,61 +1,57 @@
 import { useState } from 'react'
-import { View, StyleSheet, Text, TextInput } from 'react-native'
+import  { View, StyleSheet, Text, TextInput, Alert  } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Button from './Button'
 
-const AddTodo = () => {
+const AddTodo = ({ submitHandler }: any) => {
     const [inputText, setInputText] = useState('')
-    const [inputMultiLineText, setInputMultiLineText] = useState('')
+    
     const handleOnChange = (newText: string) => {
         setInputText(newText)
     }
-    const handleMultText = (text:string) => {
-        setInputMultiLineText(text)
-    }
+    
 
     return (
         <View style={styles.todo}>
+
             <TextInput 
                 onChangeText={handleOnChange}
                 value={inputText}
                 style={styles.inputBox}
                 placeholder='Enter Title'
             />
-
-            <TextInput 
-                onChangeText={handleMultText}
-                value={inputMultiLineText}
-                style={styles.inputMultiLine}
-                placeholder='Enter Note'
-                multiline
-            />
-
-            <Button title='Save' onPress={() => {
-                
-            }} />
-            
+    {
+        
+    }
+            <Button title='Save'  onPress={() => {submitHandler(inputText)
+                            setInputText("")
+                        }}/>
             
         </View>
+
+        
         )
 }
 
 const styles = StyleSheet.create({
     inputBox: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        paddingHorizontal: 10,
-        borderRadius: 5,
-        color: '#000',
-        width: 300
+        marginBottom: 10,
+        paddingHorizontal: 8,
+        paddoingVertical: 6,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd'
     },
     inputMultiLine: {
-        height: 50,
-        paddingHorizontal: 10,
-        borderRadius: 5,
-        color: '#000',
-        width: 300,
-        marginTop: 30
-
+            height: 400,
+            borderColor: 'gray',
+            borderWidth: 1,
+            paddingHorizontal: 10,
+            paddingTop: 10,
+            borderRadius: 5,
+            color: '#000',
+            textAlignVertical: 'top',
+            marginTop: 30,
+            marginBottom: 30,
     },
     todo: {
         marginTop: 30,

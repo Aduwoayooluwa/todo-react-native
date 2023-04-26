@@ -10,7 +10,7 @@ return (
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#FF8400',
         justifyContent: 'center',
         width: '100%',
         textAlign: 'center',
